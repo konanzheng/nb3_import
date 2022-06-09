@@ -28,7 +28,6 @@ struct Table{
     name: String,
     ddl: String,
     fields: String,
-    meta: String,
     data_files: Vec<String>,
     rows: u64,
 }
@@ -128,7 +127,7 @@ async fn execute(table: Table, pool2:MySqlPool ){
         let insert_sql = format!("insert into {} ({}) values {} ",table.name,table.fields,data);
         let _r = pool2.execute(sqlx::query(&insert_sql)).await;
         match _r {
-            Ok(r) => {
+            Ok(_ok) => {
             },
             Err(_e) => {
                 info!("sql出错:{} ",insert_sql);
@@ -158,7 +157,6 @@ fn extract(file_path:&str )->Vec<Table>{
             // 处理数据文件
             let table_meta = format!("./_nb3/{}",meta);
             println!("处理表{} JSON信息 对应gz文件{}",name,table_meta);
-            let meta = table_meta.replace(".gz","");
             let tar_gz = File::open(table_meta).unwrap();
             let mut gz = GzDecoder::new(tar_gz);
             let mut s = String::new();
@@ -179,7 +177,6 @@ fn extract(file_path:&str )->Vec<Table>{
             let table = Table{
                 name,
                 rows,
-                meta,
                 ddl,
                 fields,
                 data_files,
