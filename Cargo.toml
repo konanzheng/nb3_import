@@ -1,8 +1,15 @@
 [package]
 name = "nb3_import"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
-
+authors = ["郑瑞召 <ruizhaozheng@aliyun.com>"]
+license = "MIT OR Apache-2.0"
+homepage = "https://github.com/konanzheng/nb3_import"
+repository = "https://github.com/konanzheng/nb3_import"
+documentation = "https://github.com/konanzheng/nb3_import"
+description = "import nb3 file to mysql database with out navicat"
+keywords = ["mysql", "nb3", "util"]
+categories = ["command-line-utilities"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
