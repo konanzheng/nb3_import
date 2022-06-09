@@ -1,6 +1,6 @@
 [package]
 name = "nb3_import"
-version = "0.1.2"
+version = "1.1.1"
 edition = "2021"
 authors = ["郑瑞召 <ruizhaozheng@aliyun.com>"]
 license = "MIT OR Apache-2.0"
